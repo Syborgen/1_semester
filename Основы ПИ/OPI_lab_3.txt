@@ -1,0 +1,37 @@
+#include <stdio.h> 
+#include <locale.h> 
+#include <math.h>
+#include <conio.h>
+#define N 100
+main() {
+	int i,res,k=0,p,n;
+	system("color F0");
+	setlocale(LC_ALL, "");
+	int a[N];
+	printf("Количество элементов массива:");
+	scanf("%d", &n);
+	while (n < 0 || n>100) {
+		printf("Массив должен быть не меньше 12 символов");
+		scanf("%d", &n);
+	}
+	for (i = 0; i < n; i++)
+		do {                                               //проверка на ввод только чисел
+			res = scanf("%d", &a[i]);                   //проверка на ввод только чисел
+			while (getchar() != '\n');                  //проверка на ввод только чисел
+			if (res != 1) printf("Введите число\n");
+		} while (res != 1);                                //проверка на ввод только чисел
+		for (i = 0; i < n; i++) {
+			if (a[i] == 0) {
+				k++;
+				p = i;
+			}
+			if (a[i - 1] == 0 && a[i] != 0 ) {
+				if (k > 1)
+					break;
+				else k = 0;
+			}
+	}
+		res = p - k + 2;//определение номера первого 0 в серии
+		printf("Количество 0 в серии: %d\nПервый элемент серии:%d", k, res);
+		_getch();
+}
